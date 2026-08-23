@@ -1,0 +1,20 @@
+{
+  "name": "monis-portfolio",
+  "version": "1.0.0",
+  "description": "Handcrafted Personal Portfolio of Monis Kumar Das",
+  "main": "index.html",
+  "scripts": {
+    "dev": "node server.js",
+    "start": "node server.js",
+    "serve": "npx -y serve -l 3000 ."
+  },
+  "keywords": [
+    "portfolio",
+    "html5",
+    "css3",
+    "javascript",
+    "ai-ml-engineer"
+  ],
+  "author": "Monis Kumar Das",
+  "license": "MIT"
+}
