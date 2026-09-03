@@ -2598,3 +2598,277 @@ button {
     width: 100%;
   }
 }
+
+/* --------------------------------------------------------------------------
+   RESUME / VIEW CV SECTION
+   -------------------------------------------------------------------------- */
+.resume-section {
+  background: var(--bg-primary);
+  position: relative;
+  overflow: hidden;
+}
+
+.resume-section::before {
+  content: '';
+  position: absolute;
+  top: -120px;
+  right: -120px;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(0, 242, 254, 0.06) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.resume-section::after {
+  content: '';
+  position: absolute;
+  bottom: -80px;
+  left: -80px;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(129, 140, 248, 0.05) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.resume-showcase {
+  display: grid;
+  grid-template-columns: 340px 1fr;
+  gap: 32px;
+  align-items: stretch;
+  position: relative;
+  z-index: 1;
+}
+
+/* --- Resume Info Card (Left side) --- */
+.resume-info-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-card);
+  border-radius: var(--radius-lg);
+  padding: 36px 28px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 20px;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  transition: border-color var(--transition-base), box-shadow var(--transition-base);
+  position: relative;
+  overflow: hidden;
+}
+
+.resume-info-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--gradient-accent);
+  opacity: 0;
+  transition: opacity var(--transition-smooth);
+}
+
+.resume-info-card:hover {
+  border-color: var(--border-accent);
+  box-shadow: var(--shadow-glow);
+}
+
+.resume-info-card:hover::before {
+  opacity: 1;
+}
+
+.resume-icon-box {
+  width: 80px;
+  height: 80px;
+  border-radius: var(--radius-md);
+  background: linear-gradient(135deg, rgba(0, 242, 254, 0.12) 0%, rgba(129, 140, 248, 0.12) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent-cyan);
+  transition: transform var(--transition-smooth);
+}
+
+.resume-info-card:hover .resume-icon-box {
+  transform: scale(1.08) rotate(-2deg);
+}
+
+.resume-card-title {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.resume-card-subtitle {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  margin: -8px 0 0 0;
+}
+
+.resume-highlights {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+  text-align: left;
+  padding: 16px 0;
+  border-top: 1px solid var(--border-subtle);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.resume-highlight-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  padding: 4px 0;
+  transition: color var(--transition-fast);
+}
+
+.resume-highlight-item:hover {
+  color: var(--text-primary);
+}
+
+.resume-hl-icon {
+  font-size: 1.1rem;
+  flex-shrink: 0;
+}
+
+.resume-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+  margin-top: auto;
+}
+
+.resume-download-btn,
+.resume-open-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  font-size: 0.88rem;
+  padding: 12px 16px;
+}
+
+/* --- Resume PDF Viewer (Right side) --- */
+.resume-viewer-card {
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 1px solid var(--border-card);
+  background: var(--bg-card);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  display: flex;
+  flex-direction: column;
+  transition: border-color var(--transition-base), box-shadow var(--transition-base);
+  min-height: 600px;
+}
+
+.resume-viewer-card:hover {
+  border-color: var(--border-accent);
+  box-shadow: 0 8px 32px rgba(0, 242, 254, 0.08);
+}
+
+.resume-viewer-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 12px 18px;
+  background: var(--bg-secondary);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.viewer-dots {
+  display: flex;
+  gap: 6px;
+}
+
+.viewer-title {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  letter-spacing: 0.3px;
+}
+
+.resume-viewer-body {
+  flex: 1;
+  position: relative;
+  background: var(--bg-tertiary);
+}
+
+.resume-pdf-frame {
+  width: 100%;
+  height: 100%;
+  min-height: 580px;
+  border: none;
+  display: block;
+}
+
+.resume-pdf-fallback {
+  display: none;
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background: var(--bg-tertiary);
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  text-align: center;
+  padding: 24px;
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+}
+
+/* --- Resume Section Responsive --- */
+@media (max-width: 900px) {
+  .resume-showcase {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .resume-info-card {
+    padding: 28px 24px;
+  }
+
+  .resume-viewer-card {
+    min-height: 500px;
+  }
+
+  .resume-pdf-frame {
+    min-height: 480px;
+  }
+}
+
+@media (max-width: 600px) {
+  .resume-viewer-card {
+    min-height: 400px;
+  }
+
+  .resume-pdf-frame {
+    min-height: 380px;
+  }
+
+  .resume-info-card {
+    padding: 24px 18px;
+  }
+
+  .resume-icon-box {
+    width: 64px;
+    height: 64px;
+  }
+
+  .resume-icon-box svg {
+    width: 36px;
+    height: 36px;
+  }
+}
